@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: black;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        body > div {
+            transform: scale(2);
+        }
+
+        .wrap {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wrap > div {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+        }
+
+        #pie {
+            z-index: 1;
+        }
+
+
+        #pie-tips {
+            z-index: 2;
+        }
+
+        #pie-tips div {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        #pie-tips div:nth-child(1) {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #888;
+            transition: border .3s;
+        }
+
+        #pie-tips div:nth-child(1):after {
+            content: '全国行业平均月薪:5169';
+            position: absolute;
+            color: black;
+            font-size: 12px;
+            display: none;
+            white-space: nowrap;
+            background-color: white;
+            padding: 2px;
+        }
+
+        #pie-tips div:nth-child(2) {
+            width: 99%;
+            height: 99%;
+        }
+
+        #pie-tips div:nth-child(1):hover {
+            border: 2px solid #eee;
+        }
+
+        #pie-tips div:nth-child(1):hover:after {
+            display: block;
+        }
+
+        .line-wrap {
+            position: relative;
+        }
+
+        .line {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 150px;
+            height: 1px;
+            transform-origin: left;
+            z-index: 3;
+        }
+
+        .line-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 1px;
+            background-color: red;
+            border-color: red;
+            transition: height .3s;
+        }
+
+        .line.diamond .line-fill:before {
+            position: absolute;
+            right: -2px;
+            top: -2px;
+            content: '';
+            width: 4px;
+            height: 4px;
+            transform: rotate(45deg);
+            background-color: inherit;
+            z-index: 9;
+            transition: width .3s, height .3s;
+            /*opacity: 0;*/
+        }
+
+        .line-content {
+            position: absolute;
+            right: -100px;
+            top: 0;
+            color: black;
+            font-size: 12px;
+            display: none;
+            transform-origin: center;
+            background-color: white;
+            white-space: nowrap;
+            padding: 2px;
+        }
+
+        .line .line-fill:hover {
+            height: 3px;
+        }
+
+        .line .line-fill:hover:before {
+            width: 6px;
+            height: 6px;
+        }
+
+        .line .line-fill:hover .line-content {
+            display: block;
+        }
+
+        #filter {
+            width: 500px;
+            position: absolute;
+            margin-top: -50px;
+            z-index: 9;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #filter span {
+            font-size: 12px;
+            transform: scale(.6);
+        }
+
+        #filter .filter-wrap {
+            width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #filter label {
+            display: flex;
+            align-items: center;
+            margin-right: 1px;
+        }
+
+        #filter label > div {
+            width: 8px;
+            height: 8px;
+            position: relative;
+        }
+
+        #filter label > div:after {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            content: '';
+            background-color: #9f9f9f;
+            z-index: 1;
+        }
+
+        #filter label input[type=checkbox]:checked + div:after {
+            opacity: 0;
+        }
+
+        #filter input[type=checkbox] {
+            display: none;
+        }
+
+    </style>
+    <script src="./js/jquery-3.5.1.min.js"></script>
+    <script src="./js/echarts.min.js"></script>
+</head>
+<body>
+<div>
+    <div class="wrap">
+        <div id="pie-tips">
+            <div></div>
+            <div></div>
+        </div>
+        <div id="pie"></div>
+        <div class="line-wrap">
+            <!--        <div class="line circle diamond">-->
+            <!--            <div class="line-fill"></div>-->
+            <!--            <div class="line-content">爆破工：10000</div>-->
+            <!--        </div>-->
+        </div>
+    </div>
+
+    <div id="filter">
+        <div id="filter-specialty">
+            <!--        <h3>专业</h3>-->
+            <div class="filter-wrap">
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var pieChart = echarts.init(document.getElementById('pie'))
+
+    const pieColors = ['#FF9320', 'rgba(0,0,0,0)', '#FFAF5A', 'rgba(0,0,0,0)', '#FFCB93', 'rgba(0,0,0,0)', '#FADFC4', 'rgba(0,0,0,0)']
+    const tempColors = [...pieColors]
+
+    const specialties = [
+        {
+            name: '安全',
+            color: '#FEE5C1'
+        }, {
+            name: '后勤',
+            color: '#D0A87C'
+        }, {
+            name: '采掘',
+            color: '#795C4F'
+        }, {
+            name: '运输',
+            color: '#855726'
+        }, {
+            name: '机电',
+            color: '#7F0000'
+        }, {
+            name: '行政',
+            color: '#FF7C6A'
+        }, {
+            name: '地测',
+            color: '#DD3F2B'
+        }, {
+            name: '矿建',
+            color: '#EC7C3D'
+        }, {
+            name: '采验',
+            color: '#B94838'
+        }
+    ]
+
+    const levelArr = []
+    const tempArr = []
+
+    let num
+
+    $.ajax('./data/data.json', {
+        success: (res) => {
+            let array = res.data
+            array.forEach((item) => {
+                const find = levelArr.find((level) => level.name === item['等级'])
+                if (find) {
+                    find.value++
+                    find.data.push(item)
+                } else {
+                    levelArr.push({
+                        name: item['等级'],
+                        value: 1,
+                        data: [item],
+                        hide: false
+                    })
+                }
+            })
+
+            num = levelArr.reduce((pre, cur) => pre + cur.value, 0)
+
+            specialties.forEach((item, index) => {
+                $('#filter-specialty .filter-wrap').append(
+                    `<label>
+                        <input type="checkbox" name="filter-specialty" value=${index} checked onchange="lineRender()">
+                        <div style="background-color: ${item.color}"></div>
+                        <span>${item.name}</span>
+                    </label>`)
+            })
+
+            levelArr.forEach(item => {
+                tempArr.push(item)
+                tempArr.push({value: .5, disable: true})
+            })
+
+            $('#pie-tips').css('width', 300 / 7000 * 5169).css('height', 300 / 7000 * 5169)
+
+            pieRender()
+
+            lineRender()
+        },
+    })
+
+    function pieRender(dataIndex = undefined, tempIndex = undefined) {
+
+        if (typeof dataIndex !== 'undefined' && typeof tempIndex !== 'undefined') {
+            const isHide = levelArr[dataIndex].hide
+            levelArr[dataIndex].hide = !isHide
+            if (isHide) {
+                tempColors[tempIndex] = pieColors[tempIndex]
+            } else {
+                tempColors[tempIndex] = '#555'
+            }
+
+            lineRender()
+        }
+
+        pieChart.setOption({
+            color: tempColors,
+            title: {
+                show: false,
+                text: '大标题',
+                subtext: '小标题',
+                left: 'center',
+            },
+            tooltip: {
+                show: false,
+                trigger: 'item',
+            },
+            legend: {
+                show: false,
+                orient: 'vertical',
+                left: 'left',
+            },
+            series: [
+                {
+                    name: '等级',
+                    type: 'pie',
+                    radius: ['59%', '60%'],
+                    label: {
+                        show: false,
+                    },
+                    data: tempArr,
+                    startAngle: 0,
+                    cursor: 'default',
+                    emphasis: {
+                        // disabled: true
+                        label: {
+                            show: true,
+                            formatter: '{b}:{d}%',
+                            color: 'black',
+                            backgroundColor: 'white',
+                            fontSize: 12,
+                            padding: 2
+                        }
+                    }
+                },
+            ],
+        })
+
+    }
+
+    function lineRender() {
+
+        const filterSpecialty = []
+
+        $('#filter-specialty .filter-wrap label input[type=checkbox]:checked').each((index, item) => {
+            filterSpecialty.push({
+                index: Number(item.value),
+                name: $(item).siblings('span').text()
+            })
+        })
+
+        $('.line-wrap').empty()
+
+        levelArr.forEach((item1, index1) => {
+
+            let lineCount = 0
+
+            // 当前段的长度
+            let lingDeg = item1.value * 360 / num
+
+            // console.log(lingDeg);
+
+            const filterArr = item1.data.filter(item => filterSpecialty.some(i => item['专业'] === i.name))
+
+            const lastLineDeg = levelArr.reduce((pre, cur, index) => index < index1 ? pre + cur.value * 360 / num : pre, 0)
+
+            item1.data.forEach((item2, index2) => {
+
+                if (item1.hide === true) {
+                    return
+                }
+
+                if (filterArr.some(item => item2['专业'] === item['专业'])) {
+
+                    // 当前线的角度
+                    const angle = lingDeg / (filterArr.length) * lineCount++ + lastLineDeg
+
+                    // console.log(angle);
+
+                    const length = item2['月薪'] / (7000 / 150)
+                    const color = specialties.find(item => item.name === item2['专业']).color
+                    const specialtyIndex = specialties.findIndex(item => item.name === item2['专业'])
+
+                    let clazz = `specialty-type${specialtyIndex} level-type${index1} `
+                    item2['是否特种'] === '是' ? clazz += 'diamond ' : ''
+
+                    $('.line-wrap').append(
+                        `<div class="line ${clazz}" style="transform: rotate(${angle}deg)">
+                            <div class="line-fill" style="width: ${length}px;background-color: ${color};border-color: ${color}">
+                                <div class="line-content" style="transform: rotate(${-angle}deg)">${item2['工种']}:${item2['月薪']}</div>
+                            </div>
+                        </div>`)
+                }
+            })
+        })
+    }
+
+    pieChart.on('click', function (params) {
+        if (!params.data.disable) {
+            const levelIndex = levelArr.findIndex(item => item.name === params.name)
+            pieRender(levelIndex, params.dataIndex)
+        }
+    });
+
+
+</script>
+</html>
