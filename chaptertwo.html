@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/qs/6.7.0/qs.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>从地层深处将我点燃</title>
+    <style type="text/css"> </style>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .nav{
+            height: 50px;
+            width:100%;
+            background-color: #202020;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            text-align: center;
+        }
+        .navlist li{
+            float: left;
+            
+            width:370px;
+            
+            line-height: 50px;
+            
+        }
+        .navlist a{
+            color: #F2F1E7;
+            font-size: 14px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            
+        }
+        .navlist{
+            width: 1500px;
+            margin: auto;
+            display:inline-block
+        }
+        .navlist a:hover{
+           background: linear-gradient(#f6ff0000 85.5%, #ffee2f );
+        
+        }
+        .en{
+            font-size: 20px;
+            color:#F2F1E7;
+            position:relative;
+            top: 230px;
+            text-align: center;
+            letter-spacing:4px; 
+            text-indent: 4px;
+            text-align: center; 
+            font-family: "东叔原宋一", cursive, serif, sans-serif;
+        } 
+        .cn {
+            font-size: 75px;
+            font-family: "东叔原宋一", cursive, serif, sans-serif;
+            color:#F2F1E7;
+          
+            top: 255px;
+            text-align: center;
+            position:relative;
+            letter-spacing:4px;
+            text-indent: 4px;
+            text-align: center;   
+        }
+        
+        body {
+            font-family: "东叔原宋一", cursive, serif, sans-serif;
+            height: 100%;
+            width: 100%;
+        }
+
+        .poem1{
+            position: relative;
+            top: 1000px;
+            font-size: 80px;
+            color: #F2F1E7;
+            text-align: center;
+            margin-left: -40px;
+            letter-spacing:3px;  
+            line-height: 40px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+
+        }
+
+        .poem2{
+            position: relative;
+            top: 1090px;
+            font-size: 80px;
+            color: #F2F1E7;
+            text-align: center;
+            margin-left: 40px;
+            letter-spacing:3px;  
+            line-height: 40px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+
+        }
+        .poem{
+            position: relative;
+            top: 1010px;
+            font-size: 16px;
+            color: #F2F1E7;
+            text-align: center;
+            letter-spacing:3px;  
+            line-height: 40px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+
+        }
+        .poem span{
+            color: #FF9320;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+        }
+        .explanation{
+            font-family: "东叔原宋一", cursive, serif, sans-serif;
+            position: relative;
+            top: 1300px;
+            font-size: 40px;
+            color: #FF9320;
+            text-align: center;
+            letter-spacing:3px;  
+            line-height: 80px;
+        }
+        .wenzi1{
+            position: relative;
+            left:50%;
+            top: 1350px;
+            font-size: 2vh;
+            width:750px;
+            z-index: 1;
+            color: #F2F1E7;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            letter-spacing:1px;  
+            line-height: 28px;
+            margin-left: -375px;
+        }
+        .wenzi7{
+            position: relative;
+            left:50%;
+            top: 1400px;
+            font-size: 1vh;
+            width:800px;
+            z-index: 1;
+            color: #C6C6C6;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            letter-spacing:0.5px;  
+            line-height: 16px;
+            margin-left: -375px;
+        }
+
+        p.bold {
+        font-weight: bold;
+        }     
+        .scrollbox{
+            margin: auto;
+            position: relative;
+            top: 1450px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }     
+        .mainbox {
+            margin: auto;
+            position: relative;
+            top: 1460px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .banner{
+            width: 100%;
+            position:absolute;
+            background-attachment: fixed;
+        }
+        
+        .explanation1{     
+          font-family: "东叔原宋一", cursive, serif, sans-serif;     
+          position: relative;
+          color: #FF9320;
+          letter-spacing:1px;  
+          line-height: 36px;
+          left:1070px;
+          top:1440px;
+          font-size: 40px;
+
+        } 
+        .explanation2{          
+          font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            position: relative;
+            top: 1700px;
+            font-size: 20px;
+            color: #F2F1E7;
+            text-align: center;
+            letter-spacing:3px;  
+            line-height: 64px;
+
+        } 
+        
+        #map{
+        position: relative;
+        left: 0px;
+        top:2000px;
+        
+        }
+        .pie{
+        position: relative;
+        left: 1065px;
+        top:1600px;
+        width:450px;
+        }
+        .wenzi2{
+          position: relative;
+            left:1070px;
+            width: 460px;
+            top: 1490px;
+            font-size: 2vh;
+            z-index: 1;
+            color: #F2F1E7;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            letter-spacing:1px;  
+            line-height: 28px;
+        }
+        .wenzi3{          
+          font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            position: relative;
+            left:1070px;
+            width: 460px;
+            top: 1540px;
+            font-size: 1vh;
+            color: #C6C6C6;
+            text-align: center;
+            letter-spacing:0.5px;  
+            line-height: 16px;
+
+        } 
+      </style>
+      <link rel="stylesheet" href="./css/base.css">
+      <link rel="stylesheet" href="./css/index.css">
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+      <script src="./js/data.js"></script>
+      <script>
+        let list = getRandom(data);
+        let maindata = list;
+        var day = [2009, 2023]
+    
+        /* 乱序 */
+        function getRandom (arr) {
+          let list = arr;
+          list.sort(function () {
+            return Math.random() - 0.5;
+          });
+          return list;
+        }
+
+        </script>
+</head>
+<body bgcolor="#000000" style='overflow-x:hidden'>
+   
+    <img class="banner" src="page2/p2.jpg">
+    <div class="nav">
+        <ul class="navlist">
+            
+            <li><a href="chapterone.html">把心脏移到头顶照亮</a></li>
+            <li><a href="chaptertwo.html">从地层深处将我点燃</a></li>
+            <li><a href="chapterthree.html">被遗忘在黑色的地洞</a></li>
+            <li><a href="chapterfour.html">用身体筑成一座煤矿</a></li>
+        </ul>
+    </div>
+
+    <p class="en">PART 2</p>
+    <p class="cn">从地层深处将我点燃</p>
+
+    <div id="dg" style="z-index: 9999; position: fixed ! important; right: 30px; top: 600px;">
+      <table width=100% style="position: absolute; width:260px; right: 0px; top: px;">
+      <a href="index.html">
+          <img src="icon/home.jpg" onmouseover="this.src='icon/home2.jpg'" onmouseout="this.src='icon/home.jpg'"width="45px" height="45px"></a>
+      </table>
+      </div>
+  
+  <div id="dg" style="z-index: 9999; position: fixed ! important; right: 30px; top:660px;">
+      <table width=100% style="position: absolute; width:260px; right: 0px; top: px;">
+      <a href="chapterthree.html">
+          <img src="icon/forward.jpg" onmouseover="this.src='icon/forward2.jpg'" onmouseout="this.src='icon/forward.jpg'" width="45px" height="45px"></a>
+      </table>
+      </div>  
+  <div id="dg" style="z-index: 9999; position: fixed ! important; right: 30px; top: 720px;">
+      <table width=100% style="position: absolute; width:260px; right: 0px; top: px;">
+      <a href="chapterone.html">
+          <img src="icon/back.jpg" onmouseover="this.src='icon/back2.jpg'" onmouseout="this.src='icon/back.jpg'"width="45px" height="45px"></a>
+        </table>
+        </div>  
+
+  
+   <p class="poem1">“</p>
+   <p class="poem">正在井下干活<br>黑暗的巨手忽地一翻<br>顶板上就落下一大堆煤<br>将他紧紧拥抱<br><span>当人们扒出他时<br>他已变成了煤<br>煤也变成了他</span></p>
+   <p class="poem2">”</p>
+  </div>
+  <p class="explanation">全国矿难死伤工人数量</p>
+  <p class="wenzi1" style="text-align: left;" >2009年初至2023年2月8日，煤矿安全生产网上发布的矿难事件中，有1833名矿工在矿难事件中死亡，655人受伤，180人失踪。<br></p>
+  <p class="wenzi7" style="text-align: left;">*下图中每个人物图标代表一名在上述时间段内遭遇矿难的煤矿工人。点击图标可查看该名工人遭遇的事故详情。滑动年份条可筛选年份。</p>
+   <div class="scrollbox">
+    <div id="slider"></div>
+    <div class="btn-group">
+      <div class="btn">2009</div>
+      <div class="btn">2010</div>
+      <div class="btn">2011</div>
+      <div class="btn">2012</div>
+      <div class="btn">2013</div>
+      <div class="btn">2014</div>
+      <div class="btn">2015</div>
+      <div class="btn">2016</div>
+      <div class="btn">2017</div>
+      <div class="btn">2018</div>
+      <div class="btn">2019</div>
+      <div class="btn">2020</div>
+      <div class="btn">2021</div>
+      <div class="btn">2022</div>
+      <div class="btn">2023</div>
+    </div>
+    <!-- <input type="text" id="year-range" readonly> -->
+  </div>
+  <div class="mainbox fn-clear">
+    <div class="fl"></div>
+  </div>
+  <!-- 阴影 -->
+  <div id="shadowbox">
+    <div class="content">
+      <p><a href="javascript:;" id="close"><img src="./images/close.png" alt=""></a></p>
+      <div class="contxt">
+        <p class="desc">时间：</p>
+        <p class="desc">状态：</p>
+        <p class="desc">类型：</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(function () {
+      // 初始化年份滑块
+      $("#slider").slider({
+        range: true,
+        min: 2009,
+        max: 2023,
+        step: 1,
+        values: [2009, 2023],
+        slide: function (event, ui) {
+          // 滑块滑动时更新输入框的值
+          // $("#year-range").val(ui.values[0] + " - " + ui.values[1]);
+          day = [ui.values[0], ui.values[1]]
+          console.log(day)
+          maindata = list.filter((ele) => {
+            return ele.year >= day[0] && ele.year <= day[1]
+          })
+          console.log(maindata)
+          showlist()
+        }
+      });
+      // 将输入框的值与滑块的值同步
+      $("#year-range").val($("#slider").slider("values", 0) + " - " + $("#slider").slider("values", 1));
+      /* 初始化渲染列表 */
+      showlist()
+      function showlist () {
+        var html = '';
+        maindata.forEach((ele, i) => {
+          html += `
+          <div class="fl" index=${i}><img src='${showpng(ele.type, ele.state)}' /></div>
+          `
+        });
+        $('.mainbox').html(html);
+      }
+      function showpng (type, state) {
+        if (type == '爆炸') {
+          return `./images/bz${showstate(state)}.png`
+        } else if (type == '顶板') {
+          return `./images/db${showstate(state)}.png`
+        } else if (type == '火灾') {
+          return `./images/hz${showstate(state)}.png`
+        } else if (type == '机电') {
+          return `./images/jd${showstate(state)}.png`
+        } else if (type == '其他') {
+          return `./images/qt${showstate(state)}.png`
+        } else if (type == '水害') {
+          return `./images/sh${showstate(state)}.png`
+        } else if (type == '瓦斯') {
+          return `./images/ws${showstate(state)}.png`
+        } else if (type == '运输') {
+          return `./images/ys${showstate(state)}.png`
+        }
+      }
+      function showstate (state) {
+        if (state == '失踪') {
+          return '1';
+        } else if (state == '受伤') {
+          return '2';
+        } else {
+          return '3';
+        }
+      }
+      /* 点击出现弹框 */
+      $('.mainbox').on('click', '.fl', function () {
+        var index = $(this).index();
+        console.log(maindata[index])
+        var html = ``;
+        html += `
+        <p class="desc">状态：<i>${maindata[index].state}</i></p>
+        <p class="desc">事件：${maindata[index].event}</p>
+        `
+        $('.contxt').html(html)
+        $('#shadowbox').fadeIn()
+      })
+    })
+
+    $('#shadowbox').click((e) => {
+      if (e.target == this) {
+        e.preventDefault();
+      }
+    })
+    $('#shadowbox #close').click(function (e) {
+      $('#shadowbox').fadeOut()
+    })
+
+  </script>
+<p class="explanation2">触目惊心的死亡数据恰如高悬的训诫之尺，丈量着祖国的大地。<br>矿山安全的红线标画着煤矿劳动者们与危险的距离。<br>当昨日的苦痛凝练成今日的记忆<br>经验与教训便是它们带给我们唯一珍贵的宝藏。</p>
+
+<div  id="map">
+<iframe src="page2/map/map-chart/map.html" width="1000px" height= "800px" scrolling="No"  noresize="noresize" frameborder="0" ></iframe>
+</div>
+<div>
+  <p class="explanation1"  style="text-align:left;">全国历年矿难发生情况</p>
+  </div>
+  <p class="wenzi2" style="text-align:left;">纵观2009年-2023年春季，我国共发生矿难884起，尤以陕西省（图中高亮区域）较为频发。对矿难原因进行追溯，可以发现顶板、瓦斯、运输矿难占比较高。</p>
+  <p class="wenzi3" style="text-align:left;">*左图中白色圆点代表该事件被瞒报</p>
+
+  <img class="pie"src="page2/map/tuli.jpg">
+</body>
+</html>
