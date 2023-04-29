@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+    <title>用身体筑成一座煤矿</title>
+    <style type="text/css"> </style>
+    <style>
+        @font-face 
+        {
+            font-family: '东叔原宋一';
+            src: url('东叔原宋一 常规.TTF');
+        }
+        @font-face 
+        {
+            font-family: 'FZLanTingHeiS-R-GB';
+            src: url('FZLTHJW.TTF');
+        }
+         *{
+            margin: 0;
+            padding:0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .nav{
+            height: 50px;
+            width:100%;
+            background-color:#202020;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            text-align: center;
+        }
+        .navlist li{
+            float: left;
+            
+            width:370px;
+            
+            line-height: 50px;
+            
+        }
+        .navlist a{
+            color: #F2F1E7;
+            font-size: 14px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            
+        }
+        .navlist{
+            width: 1500px;
+            margin: auto;
+            display:inline-block
+        }
+        .navlist a:hover{
+           background: linear-gradient(#f6ff0000 85.5%, #ffee2f );
+        
+        }
+        .en{
+            font-size: 20px;
+            color:#F2F1E7;
+            position:relative;
+            top: 230px;
+            text-align: center;
+            letter-spacing:4px; 
+            text-indent: 4px;
+            text-align: center; 
+        } 
+        .cn {
+            font-size: 75px;
+            
+            color:#F2F1E7;
+          
+            top: 255px;
+            text-align: center;
+            position:relative;
+            letter-spacing:4px;
+            text-indent: 4px;
+            text-align: center;   
+        }
+        
+        body {
+            font-family: "东叔原宋一", cursive, serif, sans-serif;
+            height: 100%;
+            width: 100%;
+        }
+
+        p.bold {
+        font-weight: bold;
+        }
+
+        .banner{
+            width: 100%;
+            position:absolute;
+            background-attachment: fixed;
+        }
+        .poem1{
+            position: relative;
+            top: 1000px;
+            font-size: 80px;
+            color: #F2F1E7;
+            text-align: center;
+            margin-left: -40px;
+            letter-spacing:3px;  
+            line-height: 40px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+
+        }
+
+        .poem2{
+            position: relative;
+            top: 1090px;
+            font-size: 80px;
+            color: #F2F1E7;
+            text-align: center;
+            margin-left: 40px;
+            letter-spacing:3px;  
+            line-height: 40px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+
+        }
+        .poem{
+            position: relative;
+            top: 1010px;
+            font-size: 16px;
+            color: #F2F1E7;
+            text-align: center;
+            letter-spacing:3px;  
+            line-height: 40px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+
+        }
+        .poem span{
+            color: #FF9320;
+        }
+        #form{
+        position: absolute;
+        left:50%;
+        margin-left: -850px;
+        text-align: center;
+        top:2780px;
+        }
+
+        .content{
+            position: relative;
+            color: #FF9320;
+            top:1255px;
+            font-size: 40px;
+            z-index: 2;
+            letter-spacing:1px;
+            text-align: center;
+        }
+    
+        .content1{
+            position: relative;
+            color: #F2F1E7;
+            line-height:32px;  
+            top:1315px;
+            font-size: 2vh;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            z-index: 2;
+            letter-spacing:1px;
+            text-align: center;
+        }
+        .content2{
+            position: relative;
+            color: #FF9320;
+            top:1955px;
+            font-size: 40px;
+            z-index: 2;
+            letter-spacing:1px;
+            text-align: center;
+        }
+    
+        .content3{
+            position: relative;
+            color: #F2F1E7;
+            line-height:32px;  
+            top:2015px;
+            font-size: 2vh;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            z-index: 2;
+            letter-spacing:1px;
+            text-align: center;
+        }
+        .content4{
+            position: relative;
+
+            top: 2060px;
+            font-size: 1vh;
+
+            z-index: 1;
+            color: #C6C6C6;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            letter-spacing:0.5px;  
+            line-height: 16px;
+            text-align: center;
+        }
+        .font-quotation {
+            font-size: 18px;
+            color:#F2F1E7;
+            display: flex;
+            justify-content: center;
+            position:fixed;
+            top:140px;
+            line-height:32px;
+            width: 650px;
+            height:100%;
+            letter-spacing:4px;
+            text-indent: 4px;
+            text-align: center; 
+        }
+        #begin {
+            display: flex;
+            justify-content: center;
+            z-index: 999;
+            }
+        .one{
+            height:450px;
+            position: absolute;
+            top:2050px;
+            left:50%;
+            margin-left: -225px;
+        }
+        .one:hover {
+            transform: scale(1.1);
+            }
+
+            .explanation{
+
+            position: relative;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing:3px;  
+            line-height: 64px;
+            top: 2880px;
+            z-index: 1;
+            color: #F2F1E7;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            }
+        .gif{
+            position: relative;
+            top: 3000px;
+            width: 160vh;
+
+        }
+        .end{
+            position: relative;
+            top:160px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body bgcolor="#000000" style='overflow-x:hidden'>
+    <img class="banner" src="page4/p4.jpg">
+    <div class="nav">
+        <ul class="navlist">
+            
+            <li><a href="chapterone.html">把心脏移到头顶照亮</a></li>
+            <li><a href="chaptertwo.html">从地层深处将我点燃</a></li>
+            <li><a href="chapterthree.html">被遗忘在黑色的地洞</a></li>
+            <li><a href="chapterfour.html">用身体筑成一座煤矿</a></li>
+        </ul>
+    </div>
+    <div id="dg" style="z-index: 9999; position: fixed ! important; right: 30px; top: 600px;">
+        <table width=100% style="position: absolute; width:260px; right: 0px; top: px;">
+        <a href="index.html">
+            <img src="icon/home.jpg" onmouseover="this.src='icon/home2.jpg'" onmouseout="this.src='icon/home.jpg'"width="45px" height="45px"></a>
+        </table>
+        </div>
+    
+
+    <div id="dg" style="z-index: 9999; position: fixed ! important; right: 30px; top:660px;">
+        <table width=100% style="position: absolute; width:260px; right: 0px; top: px;">
+        <a href="chapterthree.html">
+            <img src="icon/back.jpg" onmouseover="this.src='icon/back2.jpg'" onmouseout="this.src='icon/back.jpg'"width="45px" height="45px"></a>
+          </table>
+          </div>  
+    <p class="en">PART 4</p>
+    <p class="cn">用身体筑成一座煤矿</p>
+    
+    <p class="poem1">“</p>
+    <p class="poem">地心的轰鸣掩盖不了寂静内部包裹的大雪<br>在时间的海底捕猎，肌肤乌黑的渔夫们<br>敲敲打打地拆着岁月的沉船<br>我们劳动，通过光裸的肌肤感受季节手指的冷暖。<br><span>我们劳动把绵亘的煤田，<br>这轰轰烈烈的地壳运动铸就的城堡，<br>拆下来煤流滚滚，<br>是东方少女迎风舒展的长发<br>一团工业的旗帜飘向可测的未来</span></p>
+    <p class="poem2">”</p>
+    <p class="content">煤炭消费量占能源总量 ≈ 56%</p>
+    <p class="content1">我国是全球最大的煤炭能源消费国和生产国，煤炭保障了我国能源安全与经济的高质量发展。煤矿工为社会创造了巨大的价值。</p>
+    <img class="one" src="page4/Frame 51.jpg">
+
+    <p class="content2">煤矿百万吨死亡率 ≈ 0.054</p>
+    <p class="content3">随着煤矿综采技术的发展和智能化水平的推进，煤矿工的作业安全得到一定保障。</p>
+    <p class="content4">*煤矿百万吨死亡率即每生产100万吨煤炭死亡的人数比例。</p>
+    <div  id="form">
+        <iframe src="page4/第四篇章 柱状折线图/原煤生产和死亡人数.html" width="1600px" height= "800px" scrolling="No"  noresize="noresize" frameborder="0" ></iframe>
+        </div>
+    <p class="explanation">随着国家对于煤矿产业安全建设的重视<br>与对煤矿工人工作安全保障力度的增大，<br>我国煤矿业百万吨死亡率持续走低。<br>在中华人民共和国国民经济和社会发展五年规划纲要中，<br>“矿山安全”被置于较高的地位，<br>从“总体稳定，趋于好转”到“实现矿山安全高质量发展”，<br>我国煤矿安全正走向更加光明的未来。</p>
+    <p style="text-align: center;">
+    <img class="gif" src="page4/合成1.gif"></p>
+
+   
+        <div style="height: 3200px" ></div>
+        <div id="begin">
+            <img 
+                src="page4/bg.jpg"
+                alt=""
+            />
+            <p class="font-quotation" style="text-align: left;"></p>
+            
+         
+                
+            
+        </div>
+        <div style="height: 150px"></div>
+        <script>
+        gsap.from("#begin", 
+        
+        { scrollTrigger: "#begin",
+        duration: 2, scale: 0.3 });
+    </script>
+     
+     <img class="end" src="page4/end.jpg">
+</body>
+</html>

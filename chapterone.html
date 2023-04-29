@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>把心脏移到头顶照亮</title>
+    
+    <script src='js/jquery.js' type='text/javascript'></script>
+    <style type="text/css"> </style>
+    <style>
+        @font-face 
+        {
+            font-family: '东叔原宋一';
+            src: url('东叔原宋一 常规.TTF');
+        }
+        @font-face 
+        {
+            font-family: 'FZLanTingHeiS-R-GB';
+            src: url('FZLTHJW.TTF');
+        }
+        *{
+            margin: 0;
+            padding:0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .nav{
+            height: 50px;
+            width:100%;
+            background-color:#202020;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            text-align: center;
+        }
+        .navlist li{
+            float: left;
+            
+            width:370px;
+            
+            line-height: 50px;
+            
+        }
+        .navlist a{
+            color: #F2F1E7;
+            font-size: 14px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            
+        }
+        .navlist{
+            width: 1500px;
+            margin: auto;
+            display:inline-block
+        }
+        .navlist a:hover{
+           background: linear-gradient(#f6ff0000 85.5%, #ffee2f );
+        
+        }
+        .en{
+            font-size: 20px;
+            color:#F2F1E7;
+            position:relative;
+            top: 230px;
+            text-align: center;
+            letter-spacing:4px; 
+            text-indent: 4px;
+            text-align: center; 
+        } 
+        .cn {
+            font-size: 75px;
+            
+            color:#F2F1E7;
+          
+            top: 255px;
+            text-align: center;
+            position:relative;
+            letter-spacing:4px;
+            text-indent: 4px;
+            text-align: center;   
+        }
+        
+        body {
+            font-family: "东叔原宋一", cursive, serif, sans-serif;
+            height: 100%;
+            width: 100%;
+        }
+
+        p.bold {
+        font-weight: bold;
+        }
+        .poem1{
+            position: relative;
+            top: 1000px;
+            font-size: 80px;
+            color: #F2F1E7;
+            text-align: center;
+            margin-left: -40px;
+            letter-spacing:3px;  
+            line-height: 40px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+
+        }
+
+        .poem2{
+            position: relative;
+            top: 1090px;
+            font-size: 80px;
+            color: #F2F1E7;
+            text-align: center;
+            margin-left: 40px;
+            letter-spacing:3px;  
+            line-height: 40px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+
+        }
+        .poem{
+            position: relative;
+            top: 1010px;
+            font-size: 16px;
+            color: #F2F1E7;
+            text-align: center;
+            letter-spacing:3px;  
+            line-height: 40px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+
+        }
+        .poem span{
+            color: #FF9320;
+        }
+       
+        .explanation{
+
+            position: relative;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing:3px;  
+            line-height: 64px;
+            top: 1350px;
+            z-index: 1;
+            color: #F2F1E7;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+        }
+
+
+
+        .tezhong{
+            position: relative;
+            left: 120px;
+            top: 1135px;
+            width: 20px;
+            z-index: 1;
+        }
+        .feitezhong{
+            position: relative;
+            left: 120px;
+            top: 1050px;
+            width: 20px;
+            z-index: 1;
+        }
+        .degree{
+            position: relative;
+            left: 116px;
+            top: 1190px;
+            width: 30px;
+            z-index: 1;
+        }
+        .tezhonggong{
+            position: relative;
+            font-size: 12px;
+            left: 160px;
+            top: 1120px;
+            z-index: 1;
+            color: #f2f1e7a5;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+        }
+        .feitezhonggong{
+            position:relative;
+            font-size: 12px;
+            left: 160px;
+            top: 1115px;
+            z-index: 1;
+            color: #f2f1e7a5;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+        }
+        .dengji{
+            position: relative;
+            font-size: 12px;
+            left: 160px;
+            top: 1150px;
+            z-index: 1;
+            color: #f2f1e7a5;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+        }
+        .wenzi{
+            position: absolute;
+            font-size: 2vh;
+            left: 900px;
+            top: 11300px;
+            z-index: 1;
+            color: #F2F1E7;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            letter-spacing:3px;  
+            line-height: 68px;
+        }
+        .wenzi2{
+            position: relative;
+            font-size: 40px;
+            left: 700px;
+            top: 1380px;
+            z-index: 1;
+            color: #FF9320;
+            letter-spacing:1px;  
+
+        }
+        .wenzi3{
+            position: relative;
+            font-size:  2vh;
+            width:750px;
+            left: 700px;
+            top: 1420px;
+            z-index: 1;
+            color: #F2F1E7;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            letter-spacing:1px;  
+            line-height: 28px;
+        }
+
+        .wenzi4{
+            position: relative;
+            font-size: 40px;
+            left: 945px;
+            top:-80px;
+            z-index: 1;
+            color: #FF9320;
+            letter-spacing:1px;  
+
+        }
+        .wenzi5{
+            position:relative;
+            font-size: 2vh;
+            width:600px;
+            left: 950px;
+            top: -40px;
+            z-index: 1;
+            color: #F2F1E7;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            letter-spacing:1px;  
+            line-height: 28px;
+        }
+        .wenzi6{
+            position:relative;
+            font-size: 1vh;
+            width:600px;
+            left: 950px;
+            top: 0px;
+            z-index: 1;
+            color: #C6C6C6;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            letter-spacing:0.5px;  
+            line-height: 16px;
+        }
+    
+
+        .die{
+            position: relative;
+            left:330px;
+            top:1300px;
+            z-index: 2;
+            width: 40px;
+        }
+        .die:hover {
+            transform: scale(1.5);
+            }
+        .explanation1{
+            position:relative;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing:3px;  
+            line-height: 64px;
+            top:-720px;
+            z-index: 1;
+            color: #F2F1E7;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+
+        }
+        #salary {
+        position: relative;
+        left:50px;
+        top:800px;
+        text-align: center;
+        }
+
+        #deathrate {
+        position: relative;
+        left: 0px;
+        top:1000px;
+        text-align: center;
+        }
+
+
+        .explanation2{
+            position: relative;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing:3px;  
+            line-height: 64px;
+            top:600px;
+            z-index: 1;
+            color: #F2F1E7;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+
+        }
+        .explanation3{
+            position: relative;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing:3px;  
+            line-height: 64px;
+            top:1100px;
+            z-index: 1;
+            color: #F2F1E7;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+        }
+
+        .banner{
+            width: 100%;
+            position:absolute;
+            background-attachment: fixed;
+        }
+        #banner-container{
+            height:200vh;
+        }
+        #container{
+            width: 100vw;
+            height: auto;
+
+        }
+        section{
+            height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-attachment: fixed;
+        }
+        .content{
+            width: 46vw;
+            height: 30vh;
+            line-height:32px;  
+            border-radius: 0px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            display: flex;
+            justify-content: center;
+            color: #F2F1E7;
+            font-size: 2vh;
+            letter-spacing:1px;
+            position: absolute;
+            top: 40vh;
+            left: 45vw;
+            padding: 25px;
+            box-sizing: border-box;
+        }
+        .content1{
+            width: 46vw;
+            height: 30vh;
+            line-height:32px;  
+            border-radius: 0px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            display: flex;
+            justify-content: center;
+            color: #F2F1E7;
+            font-size: 2vh;
+            letter-spacing:1px;
+            position: absolute;
+            top: 30vh;
+            left: 45vw;
+            padding: 25px;
+            box-sizing: border-box;
+        }
+        .tag{
+            width:50vw;
+            height: 0vh;
+            border-radius: 0px;
+            display: flex;
+            color: #FF9320;
+            font-size: 5.5vh;
+            position: absolute;
+            top: 28vh;
+            left: 45vw;
+            padding: 25px;
+            box-sizing: border-box;
+        }
+        #img1.content{
+            top: 40vh;
+            left: 40vw;
+        }
+        #img2.content{
+            top: 40vh;
+            left: 40vw;
+        }
+        #img2.tag{
+            top: 35vh;
+            left:60vw;
+        }
+        #img3.content{
+            top: 40vh;
+            left: 40vw;
+        }
+        #img3.tag{
+            top: 35vh;
+            left:0vw;
+        }
+        #img4.content{
+            top: 40vh;
+            left: 40vw;
+        }
+        #img4.tag{
+            top: 35vh;
+            left:0vw;
+        }
+        #img5.content{
+            top: 40vh;
+            left: 40vw;
+        }
+        #img5.tag{
+            top: 35vh;
+            left:0vw;
+        }
+        #img6.content{
+            top: 40vh;
+            left: 40vw;
+        }
+        #img6.tag{
+            top: 35vh;
+            left:0vw;
+        }
+        #img7.content{
+            top: 40vh;
+            left: 40vw;
+        }
+        #img7.tag{
+            top: 35vh;
+            left:0vw;
+        }
+        #img8.content{
+            top: 40vh;
+            left: 40vw;
+        }
+        #img8.tag{
+            top: 35vh;
+            left:0vw;
+        }
+        #img9.content{
+            top: 40vh;
+            left: 40vw;
+        }
+        #img9.tag{
+            top: 35vh;
+            left:0vw;
+        }
+
+        #img1{
+            background-image: url(page1/worker1.jpg);
+        }
+        #img2{
+            background-image: url(page1/worker2.jpg);
+        }
+        #img3{
+            background-image: url(page1/worker3.jpg);
+        }
+        #img4{
+            background-image: url(page1/worker4.jpg);
+        }
+        #img5{
+            background-image: url(page1/worker5.jpg);
+        }
+        #img6{
+            background-image: url(page1/worker6.jpg);
+        }
+        #img7{
+            background-image: url(page1/worker7.jpg);
+        }
+        #img8{
+            background-image: url(page1/worker8.jpg);
+        }
+        #img9{
+            background-image: url(page1/worker9.jpg);
+        }
+    
+</style>
+
+</head>
+<body bgcolor="#000000" style='overflow-x:hidden'>
+    <img class="banner" src="page1/p1.jpg">
+    <div class="nav">
+        <ul class="navlist">
+            
+            <li><a href="chapterone.html">把心脏移到头顶照亮</a></li>
+            <li><a href="chaptertwo.html">从地层深处将我点燃</a></li>
+            <li><a href="chapterthree.html">被遗忘在黑色的地洞</a></li>
+            <li><a href="chapterfour.html">用身体筑成一座煤矿</a></li>
+        </ul>
+    </div>
+
+    <p class="en">PART 1</p>
+    <p class="cn">把心脏移到头顶照亮</p>
+
+    <div id="dg" style="z-index: 9999; position: fixed ! important; right: 30px; top: 600px;">
+        <table width=100% style="position: absolute; width:260px; right: 0px; top: px;">
+        <a href="index.html">
+            <img src="icon/home.jpg" onmouseover="this.src='icon/home2.jpg'" onmouseout="this.src='icon/home.jpg'"width="45px" height="45px"></a>
+        </table>
+        </div>
+    
+    <div id="dg" style="z-index: 9999; position: fixed ! important; right: 30px; top:660px;">
+        <table width=100% style="position: absolute; width:260px; right: 0px; top: px;">
+        <a href="chaptertwo.html">
+            <img src="icon/forward.jpg"onmouseover="this.src='icon/forward2.jpg'" onmouseout="this.src='icon/forward.jpg'" width="45px" height="45px"></a>
+        </table>
+        </div>  
+        <p class="poem1">“</p>
+        <p class="poem">打开矿灯就是推开了空旷<br>天地逐渐收缩<br>矿工们已变成忙碌的人猿<br>手中舞动的铁器，发出极具破坏力的光<br>轰隆隆开动的皮带机<br>将地心的苍茫运往远方。<br>一个人的冥想暂时还没修炼为精炭，<br>几个地质年代的冥想已经被切割开采。<br><span>地心里的祖国狭长、乌黑<br>把心脏移到头顶上照亮，<br>地心深处遍布着哆哆嗦嗦的光芒</span></p>
+        <p class="poem2">”</p>
+        <p class="explanation">我国是世界上最早利用煤炭的国家，<br>而煤矿工人是连接我们与煤炭的桥梁。<br>在地心深处沉默的煤炭<br>在他们的劳动中幻化成解决我国主体能源需求和工业原料要求的黑金，<br>机遇与挑战并存恰恰给这个远离尘嚣的行业蒙上一层神秘面纱。</p>
+    
+
+
+   <div id="banner-container">
+
+</div>
+
+   <div id="container">
+    <section id="img1" class="img">
+        <div class="content1">
+            <p>煤矿是高危行业，地下生产作业的环境特殊，空间狭窄黑暗，高温潮湿，地质条件复杂多变，生产过程中的事故隐患十分严重。而且员工劳动强度大，劳动协调动作要求高，任何违章等不规范行为和施工质量管理不善，都可能导致事故发生。<br><br>《煤矿安全规程》严格规定了入井人员劳动保护用品使用要求。煤矿工下井前要穿戴好相应的防护用具，严防死守一切安全隐患。</p>
+        </div>
+    </section>
+</div>
+    <div id="container">
+        <section id="img2" class="img">
+            <div class="tag">
+                <p>戴好安全帽</p>
+            </div>
+            <div class="content">
+                <p>戴好你的安全帽。别嫌烦，别闹俏，保护生命最重要。<br> <br> 下井危险性较高，佩戴安全帽主要是为了保护头部，防止重物坠落砸伤头部。进入工作区域，必须正确佩戴安全帽，任何时候都不可摘下来。在井下进行开采作业，虽有照明设备，但有些地方能见度还是很低，还需自己带好照明灯具。</p>
+            </div>
+        </section>
+    </div>
+        <div id="container">
+            <section id="img3" class="img">
+                <div class="tag">
+                    <p>换上工作服</p>
+                </div>
+                <div class="content">
+                    <p>工作服，俗称窑衣，能防静电。一般采用厚棉帆布制成，这种布料结实耐磨，柔软舒适，吸湿透气，具有特别好的安全防护效果。<br><br>井下工作环境较为复杂，能见度较低，矿工工作服上的反光条，能够反馈工友的位置，对井下作业人员具有警示作用。</p>
+                </div>
+            </section>
+    </div>
+    <div id="container">
+        <section id="img4" class="img">
+            <div class="tag">
+                <p>戴好手套</p>
+            </div>
+            <div class="content">
+                <p>手部是较易受到伤害的部位，矿工需要根据个人工作的性质选用相应的保护手套。戴好防护手套可保护双手免受于材料、热量、工具和机械设备的伤害。</p>
+            </div>
+        </section>
+    </div>
+    <div id="container">
+    <section id="img5" class="img">
+        <div class="tag">
+            <p>确认携带自救器</p>
+        </div>
+        <div class="content">
+            <p>自救器是井下发生火灾、瓦斯、煤尘爆炸、煤与瓦斯突出时，入井人员随身携带的一种防止有害气体中毒或缺氧窒息的呼吸防护用品。其主要目的是当煤矿发生事故时，矿工可以戴着它通过充满有害气体的巷道快速离开灾区。<br><br>自救器携带应挂在腰带身体的前方，避免磕碰损坏自救器，也方便灾变及时开启自救。</p>
+        </div>
+    </section>
+    </div>    
+    <div id="container">
+    <section id="img6" class="img">
+        <div class="tag">
+            <p>穿上矿工胶靴</p>
+        </div>
+        <div class="content">
+            <p>矿工胶靴，劳保鞋的一种，是为了保护足部足趾安全免受伤害，同时具有防水，防滑等功能。<br>井下有积水、采矿尖石等，矿工胶靴是矿工必备的防护用品之一。</p>
+        </div>
+    </section>
+    </div>     
+    <div id="container">
+        <section id="img7" class="img">
+            <div class="tag">
+                <p>参加班前会准备下井</p>
+            </div>
+            <div class="content">
+                <p>煤矿工作的特殊性，下井前必须参加班前会安全教育。班前会主要布置当班的生产工作任务、作业现场存在的不安全隐患和本班应注意的安全事项。<br><br>不接受班前会教育，是不允许下井的。而且，开完会后，要进行宣誓，宣誓的内容各个公司不一，内容大都是强调安全的。</p>
+            </div>
+        </section>
+        </div>  
+        <div id="container">
+            <section id="img8" class="img">
+                <div class="tag">
+                    <p>按安全操作规程有序下井</p>
+                </div>
+                <div class="content">
+                    <p>井工煤矿煤层埋藏较深，必须掘进到地层中进行采煤，矿工们需要下到井下进行作业。<br><br>地面到地下的矿井运输设备主要为以下三种，从右至左依次为矿用索道（也称"猴车"，用于矿井斜巷、平巷）、罐笼（用于矿井斜巷、平巷）和巷道人车（用于立式矿井）。</p>
+                </div>
+            </section>
+            </div>        
+            <div id="container">
+                <section id="img9" class="img">
+                    <div class="tag">
+                        <p>到达工作面开始日常工作</p>
+                    </div>
+                    <div class="content">
+                        <p>我国矿工工作时间主要为“三八制”，一次下井通常需要完成八小时及以上的连续工作。矿下阴暗、潮湿、噪声大、能见度低，且工人在矿面工作时会遇到棱角锋利的矸石，因此要格外小心，注意安全。</p>
+                    </div>
+                </section>
+                </div>   
+
+                <img class="tezhong" src="page1/特种.jpg">
+                <p class="tezhonggong">特种工</p> 
+                <img class="degree" src="page1/一级.jpg">
+                <P class="feitezhonggong">非特种工</P>
+                <p class="dengji">等级</p>
+                <p class="zhuanye">专业</p>
+                <img class="feitezhong" src="page1/非特种.jpg">  
+                         
+                <div  id="salary" style="text-align:left;">
+                    <iframe  align="center" width="1000" height="1000" src="page1/page1-salary/salary.html"  frameborder="no" border="0"  marginwidth="0" marginheight="0" scrolling="no" ></iframe >
+               </div>
+
+               <p class="explanation1">“下井”是煤矿工人作业的特殊打开方式，<br>井下狭长黝黑又遍布着危险的地道是他们每日工作的场所。<br>面对恶劣的环境与工作中潜藏的风险，<br>煤矿工人的生活保障情况却并不乐观。</p>
+
+
+               <p class="wenzi4">不同煤矿工种的月薪水平</p>
+               <p class="wenzi5"> 经调查，我国绝大部分煤矿工种的平均月薪低于全行业平均月薪，煤矿工人中无带薪休假的比例高达78.4%。<br><br></p>
+               <p class="wenzi6"> *左图为不同煤矿工种的平均月薪（2015年）。井一、井二分别为井下一线、井下二线简称。</p>
+
+               <p class="explanation2">煤矿工人作业时间长、劳动强度大，<br>又由于作业面条件恶化或自然灾害等影响，<br>在工作过程中极易发生安全事故，<br>严重威胁到生命安全。</p>
+
+               <p class="wenzi2">煤矿工一生中遭遇矿难的机率 ≈ 1/6855</p>
+               <p class="wenzi3">由于我国煤矿地质条件复杂，瓦斯、水、火等灾害时刻威胁矿工健康和生命安全。2022年共有518位矿工丧生于矿难，平均约6855名在册矿工中就有一位矿工因工罹难。</p>
+               <img class = "die" src="page1/die.jpg">
+               <div  id="deathrate">
+                <iframe  align="center" width="2000" height="1000" src="page1/random.html"  frameborder="no" border="0"  marginwidth="0" marginheight="0" scrolling="no" ></iframe >
+  </div>             
+               <p class="explanation3">当偶发事件不再是个例，<br>鲜活生命的流逝，让矿难带给世人的警醒更为振聋发聩。<br><br><br><br><br><br><br></p>
+
+</body>
+</html>

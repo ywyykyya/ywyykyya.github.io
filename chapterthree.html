@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <script async scr="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script> -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script scr="./js/jquery.min.js" ></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <title>被遗忘在黑色的地洞</title>
+    <style type="text/css"> </style>
+    <style>
+     tooltip {
+        background: #f3f3f3;
+        color: #000;
+        text-align: center ;
+        padding: 6px 0;
+        position: absolute;
+        z-index:9999;
+        display:
+        none ;
+        border-radius:3px;
+        box-shadow: 0 0 3px #000;
+        padding: 3px 8px;
+        font-size: 12px;
+        text-shadow: none
+        }
+        </style>
+
+    <style>
+        @font-face 
+        {
+            font-family: '东叔原宋一';
+            src: url('东叔原宋一 常规.TTF');
+        }
+        @font-face 
+        {
+            font-family: 'FZLanTingHeiS-R-GB';
+            src: url('FZLTHJW.TTF');
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        span {
+            position: relative;
+            margin: 50px auto;
+            border: 1px solid;
+        }
+        span[aria-label]:hover:after {
+            content: attr(aria-label);
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            border: 1px solid;
+            width: 100%;
+        }
+    </style>
+
+    <style>
+          *{
+            margin: 0;
+            padding:0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .nav{
+            height: 50px;
+            width:100%;
+            background-color: #202020;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            text-align: center;
+        }
+        .navlist li{
+            float: left;
+            
+            width:370px;
+            
+            line-height: 50px;
+            
+        }
+        .navlist a{
+            color: #F2F1E7;
+            font-size: 14px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            
+        }
+        .navlist{
+            width: 1500px;
+            margin: auto;
+            display:inline-block
+        }
+        .navlist a:hover{
+           background: linear-gradient(#f6ff0000 85.5%, #ffee2f );
+        
+        }
+        .en{
+            font-size: 20px;
+            color:#F2F1E7;
+            position:relative;
+            top: 230px;
+            text-align: center;
+            letter-spacing:4px; 
+            text-indent: 4px;
+            text-align: center; 
+        } 
+        .cn {
+            font-size: 75px;
+            
+            color:#F2F1E7;
+          
+            top: 255px;
+            text-align: center;
+            position:relative;
+            letter-spacing:4px;
+            text-indent: 4px;
+            text-align: center;   
+        }
+
+        body {
+            font-family: "东叔原宋一", cursive, serif, sans-serif;
+            height: 100%;
+            width: 100%;
+        }
+
+        p.bold {
+        font-weight: bold;
+        }
+        .banner{
+            width: 100%;
+            position:absolute;
+            background-attachment: fixed;
+        }
+
+        #one{
+        position: absolute;
+        top:2950px;
+        left:50%;
+        margin-left: -850px;
+        text-align: center;
+        }
+        #two{
+        position: absolute;
+        left: 50%;
+        top:3650px;
+        margin-left: -850px;
+        text-align: center;
+        }
+        .bg{
+            position: absolute;
+            width: 100%;
+            top: 900px;
+        }
+        .date{
+            position: relative;
+            color: #FF9320;
+            top: 1000px;
+            font-size: 28px;
+            z-index: 2;
+            letter-spacing:1px;
+            text-align: center;
+        }
+        .incident{
+            position: relative;
+            color: #F2F1E7;
+            top: 1010px;
+            font-size: 40px;
+            z-index: 2;
+            letter-spacing:1px;
+            text-align: center;
+        }
+
+        .content{
+            position: relative;
+            color: #C6C6C6;
+            line-height:32px;  
+            width:950px;
+            top:1060px;
+            font-size: 14px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            z-index: 2;
+            letter-spacing:1px;
+            left: 50%;
+            margin-left: -467px;
+        }
+
+        .content1{
+            position: relative;
+            color: #FF9320;
+            top:3050px;
+            font-size: 40px;
+            z-index: 2;
+            letter-spacing:1px;
+            text-align: center;
+        }
+
+        .content2{
+            position: relative;
+            color: #C6C6C6;
+            line-height:32px;  
+            top:3070px;
+            font-size: 14px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            z-index: 2;
+            letter-spacing:1px;
+            text-align: center;
+        }
+
+        .content3{
+            position: relative;
+            color: #FF9320;
+            line-height:32px;  
+            top:3100px;
+            font-size: 14px;
+            font-family: "FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            z-index: 2;
+            letter-spacing:1px;
+            text-align: center;
+        }
+
+        .one{
+            height:13.3px;
+            position: absolute;
+            top:1600px;
+            left:50%;
+            margin-left: -660px;
+        }
+        .one:hover {
+            transform: scale(1.1);
+            }
+        .two{
+            height:42.7px;
+            position: absolute;
+            top:1650px;
+            left:50%;
+            margin-left: -250px;
+        }
+        .two:hover {
+            transform: scale(1.1);
+            }
+        .three{
+            height:64px;
+            position: absolute;
+            top:1740px;
+            left:50%;
+            margin-left: -100px;
+        }
+        .three:hover {
+            transform: scale(1.07);
+            }
+        .four{
+            height:18.7px;
+            position: absolute;
+            top:1820px;
+            left:50%;
+            margin-left: -500px;
+        }
+        .four:hover {
+            transform: scale(1.1);
+            }
+        .five{
+            height:116.7px;
+            position: absolute;
+            top:1900px;
+            left:50%;
+            margin-left: -603.8px;
+        }
+        .five:hover {
+            transform: scale(1.05);
+            }
+        .six{
+            height:76.7px;
+            position: absolute;
+            top:2100px;
+            left:50%;
+            margin-left: -500px;
+        }
+        .six:hover {
+            transform: scale(1.1);
+            }
+        .seven{
+            height:37.3px;
+            position: absolute;
+            top:2220px;
+            left:50%;
+            margin-left: -20px;
+        }
+        .seven:hover {
+            transform: scale(1.1);
+            }
+        .eight{
+            height:18.7px;
+            position: absolute;
+            top:2290px;
+            left:50%;
+            margin-left: -420px;
+        }
+        .eight:hover {
+            transform: scale(1.1);
+            }
+        .nine{
+            height:30.6px;
+            position: absolute;
+            top:2350px;
+            left:50%;
+            margin-left: 300px;
+        }
+        .nine:hover {
+            transform: scale(1.1);
+            }
+        .ten{
+            height:87px;
+            position: absolute;
+            top:2450px;
+            left:50%;
+            margin-left: -758.41px;
+        }
+        .ten:hover {
+            transform: scale(1.02);
+            }
+        .eleven{
+            height:13.3px;
+            position: absolute;
+            top:2590px;
+            left:50%;
+            margin-left: 500px;
+        }
+        .eleven:hover {
+            transform: scale(1.1);
+            }
+        .twelve{
+            height:30.6px;
+            position: absolute;
+            top:2650px;
+            left:50%;
+            margin-left: -600px;
+        }
+        .twelve:hover {
+            transform: scale(1.1);
+            }
+        .thirteen{
+            height:37.3px;
+            position: absolute;
+            top:2750px;
+            left:50%;
+            margin-left: -150px;
+        }
+        .thirteen:hover {
+            transform: scale(1.1);
+            }
+
+
+        #mytitle {
+            position: absolute;
+            color: #ffffff;
+            max-width: 160px;
+            font-size: 14px;
+            font-family:"FZLanTingHeiS-R-GB", cursive, serif, sans-serif;
+            padding: 4px;
+            background: rgba(40, 40, 40, 0.8);
+            border: solid 1px rgba(255, 255, 255, 0.6);
+       }
+    </style>
+
+<script type="text/javascript"> 
+    $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('img.one').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x +10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('img.two').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x +10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('img.three').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x +10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('img.four').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x +10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('img.five').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x +10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('img.six').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x +10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('img.seven').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x +10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('img.eight').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x +10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('img.nine').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x +10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('img.ten').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x +10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('img.eleven').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x +10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('img.twelve').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x +10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+
+        $(function () {
+            var x = 10;
+            var y = 20;
+            var newtitle = '';
+            $('img.thirteen').mouseover(function (e) {
+                newtitle = this.title;
+                this.title = '';
+                $('body').append('<div id="mytitle" >' + newtitle + '</div>');
+                $('#mytitle').css({
+                    'left': (e.pageX + x + 'px'),
+                    'top': (e.pageY + y - 80 + 'px')
+                }).show();
+            }).mouseout(function () {
+                this.title = newtitle;
+                $('#mytitle').remove();
+            }).mousemove(function (e) {
+                $('#mytitle').css({
+                    'left': (e.pageX + x +10 + 'px'),
+                    'top': (e.pageY + y - 60 + 'px')
+                }).show();
+            })
+        });
+
+</script>
+
+</head>
+
+
+<body bgcolor="#000000" style="overflow-x:hidden">
+    <img class="banner" src="page3/p3.jpg">
+    <div class="nav">
+        <ul class="navlist">
+            
+            <li><a href="chapterone.html">把心脏移到头顶照亮</a></li>
+            <li><a href="chaptertwo.html">从地层深处将我点燃</a></li>
+            <li><a href="chapterthree.html">被遗忘在黑色的地洞</a></li>
+            <li><a href="chapterfour.html">用身体筑成一座煤矿</a></li>
+        </ul>
+    </div>
+    <div id="dg" style="z-index: 9999; position: fixed ! important; right: 30px; top: 600px;">
+        <table width=100% style="position: absolute; width:260px; right: 0px; top: px;">
+        <a href="index.html">
+            <img src="icon/home.jpg" onmouseover="this.src='icon/home2.jpg'" onmouseout="this.src='icon/home.jpg'"width="45px" height="45px"></a>
+        </table>
+        </div>
+    
+    <div id="dg" style="z-index: 9999; position: fixed ! important; right: 30px; top:660px;">
+        <table width=100% style="position: absolute; width:260px; right: 0px; top: px;">
+        <a href="chapterfour.html">
+            <img src="icon/forward.jpg" onmouseover="this.src='icon/forward2.jpg'" onmouseout="this.src='icon/forward.jpg'" width="45px" height="45px"></a>
+        </table>
+        </div>  
+    <div id="dg" style="z-index: 9999; position: fixed ! important; right: 30px; top: 720px;">
+        <table width=100% style="position: absolute; width:260px; right: 0px; top: px;">
+        <a href="chaptertwo.html">
+            <img src="icon/back.jpg" onmouseover="this.src='icon/back2.jpg'" onmouseout="this.src='icon/back.jpg'"width="45px" height="45px"></a>
+          </table>
+          </div>  
+
+    <img class="bg" src="page3/bg.jpg">
+    <p class="en">PART 3</p>
+    <p class="cn">被遗忘在黑色的地洞</p>
+
+    <p class="date">2023年2月22日13时许</p>
+    <p class="incident">内蒙古自治区阿拉善盟新井煤业矿区发生大面积坍塌</p>
+    <p class="content">2月22日13时许，内蒙古阿拉善盟阿拉善左旗新井煤业有限公司一露天煤矿发生大面积坍塌，有工作人员和车辆被埋。<br><br>截至2023年2月23日，事故已造成6人死亡、6人受伤、尚有47人失联。截至2023年2月24日14时，有23支抢险救援队伍共1155人在现场参与救援，其中国家专业救援力量7支255人，包括国家救援指挥中心、国家应急救援勘探队等，内蒙古自治区救援力量7支315人，地方救援力量9支585人。</p>
+            
+    <img class="one" src="page3/1.jpg" title="在榜时间：37min">
+    <img class="two" src="page3/2.jpg" title="在榜时间：152min">
+    <img class="three" src="page3/3.jpg" title="在榜时间：225min">
+    <img class="four" src="page3/4.jpg" title="在榜时间：71min">
+    <img class="five" src="page3/5.jpg" title="在榜时间：432min">
+    <img class="six" src="page3/6.jpg" title="在榜时间：280min">
+    <img class="seven" src="page3/7.jpg" title="在榜时间：137min">
+    <img class="eight" src="page3/8.jpg" title="在榜时间：61min">
+    <img class="nine" src="page3/9.jpg" title="在榜时间：111min">
+    <img class="ten" src="page3/10.jpg" title="在榜时间：353min">
+    <img class="eleven" src="page3/11.jpg" title="在榜时间：24min">
+    <img class="twelve" src="page3/12.jpg" title="在榜时间：114min">
+    <img class="thirteen" src="page3/13.jpg" title="在榜时间：129min">
+
+    <div  id="one">
+        <iframe src="page3/第三篇章 折线图/单个事件.html" width="1700px" height= "400px" scrolling="No"  noresize="noresize" frameborder="0" ></iframe>
+        </div>
+    
+    <p class="content1">矿难记忆的保质期 ≈ 1.79天</p>
+    <p class="content2">内蒙古煤矿坍塌事件话题从2月22日16时到24日11时仅在榜2580min<br>峰值热度为同期娱乐明星话题热度的1/3</p>
+    <p class="content3">"热搜"之后，那些煤矿工完成了生命中的第二次"死亡"</p>
+
+
+    <div  id="two">
+        <iframe src="page3/第三篇章 折线图/对比事件.html" width="1700px" height= "400px" scrolling="No"  noresize="noresize" frameborder="0" ></iframe>
+        </div>    
+</body>
+</html>
