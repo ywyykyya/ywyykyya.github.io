@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./js/echarts.min.js"></script>
+
+</head>
+
+<body>
+    <body style="background-color:rgb(0, 0, 0);"></body>
+    <div id="main" style="width: 1700px;height:400px;">
+    </div>
+    <script>
+       var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+
+option = {
+  grid: {
+    x:250,//左
+    y:10,//上
+    x2:250,//右
+    y2:90,//下
+            },
+  tooltip: {
+    axisPointer: {
+type: 'none'
+},
+    trigger: "axis",
+    borderRadius: 0,
+	backgroundColor: "rgba(255, 255, 255)",
+	//formatter: function (param) {  
+            //var text = '';
+           // text += '<div style="display:flex;flex-direction:column;width:100px;padding:0px 0px 0px 0px;">' + 
+                  //     '<span style="color:#AAAAAA;font-size:14px;">' + 
+                   //        param[0].axisValue + 
+                   //    '</span>' + 
+                    //   '热度：</span style="color:#000000;font-size:14px;font-weight:1000;padding-top:2px;">' + 
+                    //        param[0].value + 
+                    //   '</span>' + 
+                    // '</div>';
+         //   return text;
+        //  },
+
+  },
+  xAxis: {
+    type: 'category',
+    data: ['2023-2-22 14', '2023-2-22 15', '2023-2-22 16', '2023-2-22 17', '2023-2-22 18', '2023-2-22 19', '2023-2-22 20','2023-2-22 21','2023-2-22 22','2023-2-22 23','2023-2-23 00','2023-2-23 01','2023-2-23 02','2023-2-23 03','2023-2-23 04','2023-2-23 05','2023-2-23 06','2023-2-23 07','2023-2-23 08','2023-2-23 09','2023-2-23 10','2023-2-23 11','2023-2-23 12','2023-2-23 13'],
+    axisTick: {
+      show: false},
+    axisLine:{
+                        lineStyle:{
+                            color:'#505050',
+                        }
+                    },                          
+                     axisLabel: {
+                      margin: 20, 
+                      textStyle: {
+                            color: '#EFEFEF',
+                            fontSize: 11
+                        }
+                    }
+},
+  yAxis: {
+    type: 'value',
+    splitLine: {
+    show: false
+    },
+    show:false,
+  },
+  series: [
+    {
+     symbol: 'circle',   //将小圆点改成实心 不写symbol默认空心
+     symbolSize: 6,    //小圆点的大小
+        lineStyle: {
+              normal: {
+              color: '#FF9320', 
+             },
+           },
+        itemStyle: {
+           normal: {
+            color: '#FF9320',
+            },
+            emphasis: {          //突出效果配置(鼠标置于拐点上时)
+						borderColor: '#FF9320',    //  拐点边框颜色
+						borderWidth: 5,         //  拐点边框宽度
+						shadowColor: '#FF9320', //  阴影颜色
+						shadowBlur: 3,          //  阴影渐变范围控制
+						color: '#FF9320'//hover拐点颜色定义
+				},
+        },
+        areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgba(255,147,32,0.7)'    //靠上方的透明颜色
+          },
+          {
+            offset: 1,
+            color: 'rgba(255,147,32,0)'    //靠下方的透明颜色
+          }
+        ])
+      },
+
+        name: '热度',
+        type: 'line',
+        data: [0, 0, 0, 5256, 6972, 24719, 19581, 16875, 9930, 4170, 1770,542,121,357,422,678,3933,11016,15675,13587,10459,7967,5009,7934],
+        
+    }
+  ]
+};
+
+option && myChart.setOption(option);
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./js/echarts.min.js"></script>
+
+</head>
+
+<body>
+    <body style="background-color:rgb(0, 0, 0);"></body>
+    <div id="main" style="width: 1700px;height:400px;">
+    </div>
+    <script>
+       var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+
+option = {
+  grid: {
+    x:250,//左
+    y:10,//上
+    x2:250,//右
+    y2:90,//下
+            },
+  tooltip: {
+    trigger: "axis",
+    borderRadius: 0,
+	backgroundColor: "rgba(255, 255, 255)"
+  },
+  xAxis: {
+    type: 'category',
+    data: ['2023-2-21','2023-2-22','2023-2-23','2023-2-24','2023-2-25','2023-2-26','2023-2-27','2023-2-28','2023-3-1','2023-3-2','2023-3-3','2023-3-4','2023-3-5','2023-3-6','2023-3-7','2023-3-8','2023-3-9','2023-3-10','2023-3-11','2023-3-12','2023-3-13','2023-3-14','2023-3-15','2023-3-16','2023-3-17','2023-3-18','2023-3-19','2023-3-20','2023-3-21','2023-3-22'],
+    axisTick: {
+      show: false},
+    axisLine:{
+      lineStyle:{
+       color:'#505050',
+        }
+        },                          
+    axisLabel: {
+      textStyle: {
+      color: '#EFEFEF',
+      fontSize: 11
+      }
+       }
+},
+  yAxis: {
+    type: 'value',
+    splitLine: {
+    show: false
+    },
+    show:false,
+    lineStyle:{
+        color:'#393939',
+        },
+    axisLine:{
+                        lineStyle:{
+                            color:'#393939',
+                        }
+                    },                          
+                     axisLabel: {
+                        textStyle: {
+                            color: '#757575',
+                            fontSize: 8
+                        }
+                    }
+  },
+  series: [
+    {   
+        symbol: 'circle',   //将小圆点改成实心 不写symbol默认空心
+        symbolSize: 6,    //小圆点的大小
+        lineStyle: {
+              normal: {
+              color: '#505050', 
+             },
+           },
+        itemStyle: {
+           normal: {
+            color: '#505050',
+            },
+            emphasis: {          //突出效果配置(鼠标置于拐点上时)
+						borderColor: '#505050',    //  拐点边框颜色
+						borderWidth: 5,         //  拐点边框宽度
+						shadowColor: '#505050', //  阴影颜色
+						shadowBlur: 3,          //  阴影渐变范围控制
+						color: '#505050'//hover拐点颜色定义
+				},
+        },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgba(80,80,80,0.5)'    //靠上方的透明颜色
+          },
+          {
+            offset: 1,
+            color: 'rgba(80,80,80,0)'    //靠下方的透明颜色
+          }
+        ])
+              },
+        name: '蔡徐坤',
+        type: 'line',
+        data: [18330,19088,22800,24578,26312,26853,21043,18568,19485,18573,18631,20113,18954,16860,18823,20007,17648,17115,21252,18725,16526,16245,15691,16199,16390,18899,17466,15343,15630,17122],
+        
+    },
+    {
+      symbol: 'circle',   //将小圆点改成实心 不写symbol默认空心
+      symbolSize: 6,    //小圆点的大小 
+      lineStyle: {
+              normal: {
+              color: '#FF9120', 
+             },
+           },
+        itemStyle: {
+           normal: {
+            color: '#FF9345',
+            },
+            emphasis: {          //突出效果配置(鼠标置于拐点上时)
+						borderColor: '#FF9320',    //  拐点边框颜色
+						borderWidth: 5,         //  拐点边框宽度
+						shadowColor: '#FF9320', //  阴影颜色
+						shadowBlur: 3,          //  阴影渐变范围控制
+						color: '#FF9320'//hover拐点颜色定义
+				},
+        },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgba(255,147,32,0.2)'    //靠上方的透明颜色
+          },
+          {
+            offset: 1,
+            color: 'rgba(255,147,32,0)'    //靠下方的透明颜色
+          }
+        ])
+              },
+        name: '内蒙古煤矿',
+        type: 'line',
+        data: [127,2322,7508,5266,2296,1767,2110,1433,1278,1159,875,549,585,683,579,451,428,409,298,285,337,322,323,360,304,277,261,371,355,305],
+        markArea: {
+        itemStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgba(255,147,32,0)'    //靠上方的透明颜色
+          },
+          {
+            offset: 1,
+            color: 'rgba(255,147,32,0.2)'    //靠下方的透明颜色
+          }
+        ])
+        },
+        data: [
+          [
+            {
+              xAxis: 1
+            },
+            {
+              xAxis: 3
+            }
+          ],
+        ]
+      },
+      
+    }
+  ],
+};
+
+option && myChart.setOption(option);
+
+
+</script>
+</body>
+
+</html>
