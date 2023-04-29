@@ -1,0 +1,371 @@
+<!--
+ * @Author: your name
+ * @Date: 2023-03-27 21:29:25
+ * @LastEditTime: 2023-03-30 11:39:11
+ * @LastEditors: Do not edit
+ * @Description: In User Settings Edit
+ * @FilePath: \jiedan\map.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>map</title>
+  </head>
+  <!-- 引入jquery -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <!-- 引入 ECharts -->
+  <script src="dist/echarts.js"></script>
+  <!-- 引入百度地图扩展 -->
+  <script src="dist/extension/bmap.min.js"></script>
+  <!-- 申请百度个人api -->
+  <script src="https://api.map.baidu.com/api?v=2.0&ak=MYcvBj27IDRNfIPq5MEfw1KFQlDKtKFt"></script>
+  <!-- 引入xlsx插件 -->
+  <script src="dist/xlsx.full.min.js"></script>
+  <!-- 引入初始化css -->
+  <link rel="stylesheet" href="dist/reset.css" />
+  <!-- 引入地图样式 -->
+  <script src="dist/custom_map_config.js"></script>
+  <script src="./data.js"></script>
+  <style>
+    #map-con {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <body>
+    <div id="map-con"></div>
+    <!-- <input type="file" style="height: 20px; position: absolute; top: 20px; left: 20px" id="input" /> -->
+  </body>
+</html>
+<script type="module">
+  window.onload = function () {
+    window.dom = document.getElementById('map-con');
+    window.chart = echarts.init(dom);
+    window.files = null;
+    createGraph(sheetJson);
+    // var sheetJson = [];
+    // 加载文件为JSON
+    // $('#input').on('change', function (e) {
+    //   let fileObj = e.target.files[0];
+    //   const fileReader = new FileReader();
+    //   fileReader.readAsArrayBuffer(fileObj);
+    //   fileReader.onload = event => {
+    //     const fileData = event.target.result;
+    //     const workbook = XLSX.read(fileData, {
+    //       type: 'binary'
+    //     });
+    //     const wsname = workbook.SheetNames[0];
+    //     sheetJson = XLSX.utils.sheet_to_json(workbook.Sheets[wsname]);
+    //     console.log(sheetJson);
+    //     createGraph(sheetJson);
+    //   };
+    // });
+    /**
+     * @description: 高亮山西省
+     * @param {*}
+     * @return {*}
+     */
+    function highLight() {
+      var bdary = new BMap.Boundary();
+      bdary.get('山西省', function (rs) {
+        var count = rs.boundaries.length;
+        var pointArray = [];
+        for (var i = 0; i < count; i++) {
+          var ply = new BMap.Polygon(rs.boundaries[i], {
+            strokeWeight: 1.75,
+            strokeColor: '#918D92',
+            fillOpacity: 0.12
+          });
+          bmap.addOverlay(ply);
+          pointArray = pointArray.concat(ply.getPath());
+        }
+      });
+    }
+    /**
+     * @description: 初始化地图
+     * @param {*} param
+     * @return {*}
+     */
+    function setInitMap(param) {
+      let data = convertData(param).res;
+      let data1 = convertData(param).res1;
+      if (data && data1) {
+        let option = {
+          title: {
+            text: ' ',
+            left: 'center',
+            textColor: '#fff',
+            top: 20
+          },
+          tooltip: {
+            trigger: 'item',
+            type: 'cross',
+            alwaysShowContent: false,
+            borderWidth: 2.5,
+            borderRadius: 0,
+            borderColor: 'rgba(255,255,255,1)',
+            backgroundColor: 'rgba(255,255,255,1)',
+            padding: 0,
+            // position: "top",
+            textStyle: {
+              fontSize: 12,
+              color: '#333'
+            },
+            formatter: function (data) {
+              console.log(data);
+              if (data.data.table1) {
+                var color = '#FFB84D';
+                var a =
+                  "<div class='label-con' style='display:flex;padding: 5px 10px;border-radius: 0px;text-align:left;color:#FF9320;font-size: 18px;'>" +
+                  data.data.table1 +
+                  "<div style='margin-left:5px;margin-top:4px;color:#898989;font-size: 13px;'>" +
+                  data.data.table2 +
+                  '</div>' +
+                  '</div>';
+                a += "<div style='padding: 1px 10px;font-size: 14px;'>位置：";
+                a += data.data['table3'] + '<br>';
+                a += '</div>';
+                a += "<div style='padding: 4px 10px;font-size: 14px;'>死亡人数：";
+                a += data.data['table4'] + '<br>';
+                a += '</div>';
+                return a;
+              }
+            }
+          },
+
+          bmap: {
+            roam: 'true',
+            center: [113.75, 36.2],
+            // 百度地图缩放
+            zoom: 6,
+            type: 'map',
+            mapType: 'china',
+            selectedMode: 'multiple'
+          },
+          series: [
+            {
+              name: '瞒报事故',
+              type: 'scatter',
+              coordinateSystem: 'bmap',
+              data: data,
+              symbolSize: function (val) {
+                return Number(val[2]);
+              },
+              itemStyle: {
+                normal: {
+                  color: '#D2D2D2'
+                }
+              }
+            },
+            {
+              name: '非瞒报事故',
+              type: 'scatter',
+              coordinateSystem: 'bmap',
+              data: data1,
+              symbolSize: function (val) {
+                return Number(val[2]);
+              },
+              itemStyle: {
+                normal: {
+                  color: '#FF9320'
+                }
+              }
+            }
+          ]
+        };
+
+        option && chart.setOption(option);
+      } else {
+        alert('数据不对');
+      }
+    }
+    /**
+     * @description: 数据信息加载
+     * @param {*} data
+     * @return {*}
+     */
+    function convertData(data) {
+      var res = [];
+      var res1 = [];
+      for (var i = 0; i < data.length; i++) {
+        let value = null;
+        if (data[i]['事故等级'] == '特别重大事故') {
+          value = 35;
+        } else if (data[i]['事故等级'] == '重大事故') {
+          value = 14;
+        } else if (data[i]['事故等级'] == '较大事故') {
+          value = 8;
+        } else if (data[i]['事故等级'] == '一般事故') {
+          value = 4;
+        } else {
+          value = 0;
+        }
+        let list = [];
+        list.push(Number(data[i]['经度']));
+        list.push(Number(data[i]['纬度']));
+        list.push(value);
+        if (data[i]['是否瞒报']) {
+          res.push({
+            name: data[i]['省份'],
+            value: list,
+            man: data[i]['是否瞒报'],
+            table1: data[i]['标题1'] ? data[i]['标题1'] : '',
+            table2: data[i]['标题2'] ? data[i]['标题2'] : '',
+            table3: data[i]['位置'] ? data[i]['位置'] : '',
+            table4: data[i]['死亡人数'] ? data[i]['死亡人数'] : ''
+          });
+        } else {
+          res1.push({
+            name: data[i]['省份'],
+            value: list,
+            man: data[i]['是否瞒报'],
+            table1: data[i]['标题1'] ? data[i]['标题1'] : '',
+            table2: data[i]['标题2'] ? data[i]['标题2'] : '',
+            table3: data[i]['位置'] ? data[i]['位置'] : '',
+            table4: data[i]['死亡人数'] ? data[i]['死亡人数'] : ''
+          });
+        }
+      }
+      let obj = { res: res, res1: res1 };
+      return obj;
+    }
+    /**
+     * @description: 创建echart
+     * @param {*} param
+     * @return {*}
+     */
+    function createGraph(param) {
+      setInitMap(param);
+      window.bmap = chart.getModel().getComponent('bmap').getBMap();
+      setTimeout(() => {
+        bmap.setMapStyle({
+          styleJson: [
+            {
+              featureType: 'all',
+              elementType: 'all',
+              stylers: {
+                visibility: 'off'
+              }
+            },
+            {
+              featureType: 'background',
+              elementType: 'all',
+              stylers: {
+                color: '#000',
+                visibility: 'on'
+              }
+            }
+          ]
+        });
+        let city = [
+          { province: '北京' },
+          { province: '天津' },
+          { province: '河北省' },
+          { province: '山西省' },
+          {
+            province: '内蒙古自治区'
+          },
+          {
+            province: '辽宁省'
+          },
+          {
+            province: '吉林省'
+          },
+          {
+            province: '黑龙江省'
+          },
+          { province: '上海' },
+          {
+            province: '江苏省'
+          },
+          {
+            province: '浙江省'
+          },
+          {
+            province: '安徽省'
+          },
+          {
+            province: '福建省'
+          },
+          {
+            province: '江西省'
+          },
+          {
+            province: '山东省'
+          },
+          {
+            province: '河南省'
+          },
+          {
+            province: '湖北省'
+          },
+          {
+            province: '湖南省'
+          },
+          {
+            province: '广东省'
+          },
+          {
+            province: '广西壮族自治区'
+          },
+          {
+            province: '海南省'
+          },
+          { province: '重庆' },
+          {
+            province: '四川省'
+          },
+          {
+            province: '贵州省'
+          },
+          {
+            province: '云南省'
+          },
+          {
+            province: '西藏自治区'
+          },
+          {
+            province: '陕西省'
+          },
+          {
+            province: '甘肃省'
+          },
+          {
+            province: '青海省'
+          },
+          {
+            province: '宁夏回族自治区'
+          },
+          {
+            province: '新疆维吾尔自治区'
+          },
+          {
+            province: '台湾'
+          },
+          { province: '香港特别行政区' },
+          { province: '澳门特别行政区' }
+        ];
+        var bdary = new BMap.Boundary();
+        city.forEach((item, index) => {
+          bdary.get(item.province, function (rs) {
+            var count = rs.boundaries.length;
+            var pointArray = [];
+            for (var i = 0; i < count; i++) {
+              var ply = new BMap.Polyline(rs.boundaries[i], {
+                strokeWeight: 1,
+                strokeColor: '#2F2F31'
+              });
+              bmap.addOverlay(ply);
+              pointArray = pointArray.concat(ply.getPath());
+            }
+          });
+        });
+        highLight();
+      }, 200);
+    }
+  };
+</script>

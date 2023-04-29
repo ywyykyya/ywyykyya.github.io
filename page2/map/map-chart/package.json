@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "echarts": "^5.4.2",
+    "xlsx": "^0.18.5"
+  }
+}

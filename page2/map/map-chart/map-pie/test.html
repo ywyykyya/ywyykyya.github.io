@@ -1,0 +1,722 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./js/echarts.min.js"></script>
+
+</head>
+
+<body>
+    <div id="main" style="width: 200px;height:100px;">
+    </div>
+    <script>
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+ 
+        title: [{
+            text: '175',
+            left: 'center',
+            top: 'center',
+            textStyle: {
+                fontSize: 14,
+                color: '#FFFFFF',
+                fontFamily: 'FZLanTingHeiS-L-GB',
+
+            },
+        }, {
+            text: '顶板',
+            top: 'center',
+            left: '5%',
+            textStyle: { 
+                fontSize: 14,
+                color: "#FFFFFF" ,
+                fontFamily: 'FZLanTingHeiS-L-GB',
+            }
+        }],
+        backgroundColor: '#000000',
+        polar: {//极坐标系地底板，类似于grid
+            radius: ['65%', '80%'],
+            center: ['50%', '50%'],
+        },
+        angleAxis: {//角度轴，一个圆圈
+            max: 100,
+            show: true,
+            axisLabel: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            splitLine: {
+                show: false
+            }
+        },
+        radiusAxis: {//径向轴，一段线段，type:'category'类目轴，类似的x轴的类目轴
+            type: 'category',
+            show: true,
+            axisLabel: {
+                show: true,
+            },
+            axisLine: {
+                show: true,
+            },
+            axisTick: {
+                show: true,
+            },
+        },
+        series: [{
+            name: '',
+            type: 'bar',//柱状图
+            roundCap: true,
+            barWidth: 50,
+            showBackground: true,
+            backgroundStyle: {
+                color: '29292F',
+            },
+            data: [19.7],
+            coordinateSystem: 'polar',//采用极坐标系
+
+            itemStyle: {
+                normal: {
+                    color: "#FF9320"
+                },
+            },
+        },
+        
+        
+        ],
+
+        };
+
+        option && myChart.setOption(option);
+
+    </script>
+
+<div id="main1" style="width: 200px;height:100px;">
+</div>
+<script>
+    var chartDom = document.getElementById('main1');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+
+    title: [{
+        text: '154',
+        left: 'center',
+        top: 'center',
+        textStyle: {
+            fontSize: 14,
+            color: '#FFFFFF',
+            fontFamily: 'FZLanTingHeiS-L-GB',
+
+        },
+    }, {
+        text: '瓦斯',
+        top: 'center',
+        left: '5%',
+        textStyle: { 
+            fontSize:14,
+            color: "#FFFFFF" ,
+            fontFamily: 'FZLanTingHeiS-L-GB',
+        }
+    }],
+    backgroundColor: '#000000',
+    polar: {//极坐标系地底板，类似于grid
+        radius: ['65%', '80%'],
+        center: ['50%', '50%'],
+    },
+    angleAxis: {//角度轴，一个圆圈
+        max: 100,
+        show: true,
+        axisLabel: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+        splitLine: {
+            show: false
+        }
+    },
+    radiusAxis: {//径向轴，一段线段，type:'category'类目轴，类似的x轴的类目轴
+        type: 'category',
+        show: true,
+        axisLabel: {
+            show: true,
+        },
+        axisLine: {
+            show: true,
+        },
+        axisTick: {
+            show: true,
+        },
+    },
+    series: [{
+        name: '',
+        type: 'bar',//柱状图
+        roundCap: true,
+        barWidth: 50,
+        showBackground: true,
+        backgroundStyle: {
+            color: '29292F',
+        },
+        data: [17.4],
+        coordinateSystem: 'polar',//采用极坐标系
+
+        itemStyle: {
+            normal: {
+                color: "#FF9320"
+            },
+        },
+    },
+    
+    
+    ],
+
+    };
+
+    option && myChart.setOption(option);
+
+</script>
+
+
+<div id="main2" style="width: 200px;height:100px;">
+</div>
+<script>
+    var chartDom = document.getElementById('main2');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+
+    title: [{
+        text: '98',
+        left: 'center',
+        top: 'center',
+        textStyle: {
+            fontSize: 14,
+            color: '#FFFFFF',
+            fontFamily: 'FZLanTingHeiS-L-GB',
+
+        },
+    }, {
+        text: '运输',
+        top: 'center',
+        left: '5%',
+        textStyle: { 
+            fontSize: 14,
+            color: "#FFFFFF" ,
+            fontFamily: 'FZLanTingHeiS-L-GB',
+        }
+    }],
+    backgroundColor: '#000000',
+    polar: {//极坐标系地底板，类似于grid
+        radius: ['65%', '80%'],
+        center: ['50%', '50%'],
+    },
+    angleAxis: {//角度轴，一个圆圈
+        max: 100,
+        show: true,
+        axisLabel: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+        splitLine: {
+            show: false
+        }
+    },
+    radiusAxis: {//径向轴，一段线段，type:'category'类目轴，类似的x轴的类目轴
+        type: 'category',
+        show: true,
+        axisLabel: {
+            show: true,
+        },
+        axisLine: {
+            show: true,
+        },
+        axisTick: {
+            show: true,
+        },
+    },
+    series: [{
+        name: '',
+        type: 'bar',//柱状图
+        roundCap: true,
+        barWidth: 50,
+        showBackground: true,
+        backgroundStyle: {
+            color: '29292F',
+        },
+        data: [11],
+        coordinateSystem: 'polar',//采用极坐标系
+
+        itemStyle: {
+            normal: {
+                color: "#FF9320"
+            },
+        },
+    },
+    
+    
+    ],
+
+    };
+
+    option && myChart.setOption(option);
+
+</script>
+
+
+<div id="main3" style="width: 200px;height:100px;">
+</div>
+<script>
+    var chartDom = document.getElementById('main3');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+
+    title: [{
+        text: '56',
+        left: 'center',
+        top: 'center',
+        textStyle: {
+            fontSize: 14,
+            color: '#FFFFFF',
+            fontFamily: 'FZLanTingHeiS-L-GB',
+
+        },
+    }, {
+        text: '水害',
+        top: 'center',
+        left: '5%',
+        textStyle: { 
+            fontSize: 14,
+            color: "#FFFFFF" ,
+            fontFamily: 'FZLanTingHeiS-L-GB',
+        }
+    }],
+    backgroundColor: '#000000',
+    polar: {//极坐标系地底板，类似于grid
+        radius: ['65%', '80%'],
+        center: ['50%', '50%'],
+    },
+    angleAxis: {//角度轴，一个圆圈
+        max: 100,
+        show: true,
+        axisLabel: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+        splitLine: {
+            show: false
+        }
+    },
+    radiusAxis: {//径向轴，一段线段，type:'category'类目轴，类似的x轴的类目轴
+        type: 'category',
+        show: true,
+        axisLabel: {
+            show: true,
+        },
+        axisLine: {
+            show: true,
+        },
+        axisTick: {
+            show: true,
+        },
+    },
+    series: [{
+        name: '',
+        type: 'bar',//柱状图
+        roundCap: true,
+        barWidth: 50,
+        showBackground: true,
+        backgroundStyle: {
+            color: '29292F',
+        },
+        data: [6.3],
+        coordinateSystem: 'polar',//采用极坐标系
+
+        itemStyle: {
+            normal: {
+                color: "#FF9320"
+            },
+        },
+    },
+    
+    
+    ],
+
+    };
+
+    option && myChart.setOption(option);
+
+</script>
+
+
+<div id="main4" style="width: 200px;height:100px;">
+</div>
+<script>
+    var chartDom = document.getElementById('main4');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+
+    title: [{
+        text: '53',
+        left: 'center',
+        top: 'center',
+        textStyle: {
+            fontSize: 14,
+            color: '#FFFFFF',
+            fontFamily: 'FZLanTingHeiS-L-GB',
+
+        },
+    }, {
+        text: '机电',
+        top: 'center',
+        left: '5%',
+        textStyle: { 
+            fontSize: 14,
+            color: "#FFFFFF" ,
+            fontFamily: 'FZLanTingHeiS-L-GB',
+        }
+    }],
+    backgroundColor: '#000000',
+    polar: {//极坐标系地底板，类似于grid
+        radius: ['65%', '80%'],
+        center: ['50%', '50%'],
+    },
+    angleAxis: {//角度轴，一个圆圈
+        max: 100,
+        show: true,
+        axisLabel: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+        splitLine: {
+            show: false
+        }
+    },
+    radiusAxis: {//径向轴，一段线段，type:'category'类目轴，类似的x轴的类目轴
+        type: 'category',
+        show: true,
+        axisLabel: {
+            show: true,
+        },
+        axisLine: {
+            show: true,
+        },
+        axisTick: {
+            show: true,
+        },
+    },
+    series: [{
+        name: '',
+        type: 'bar',//柱状图
+        roundCap: true,
+        barWidth: 50,
+        showBackground: true,
+        backgroundStyle: {
+            color: '29292F',
+        },
+        data: [5.9],
+        coordinateSystem: 'polar',//采用极坐标系
+
+        itemStyle: {
+            normal: {
+                color: "#FF9320"
+            },
+        },
+    },
+    
+    
+    ],
+
+    };
+
+    option && myChart.setOption(option);
+
+</script>
+
+<div id="main5" style="width: 200px;height:100px;">
+</div>
+<script>
+    var chartDom = document.getElementById('main5');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+
+    title: [{
+        text: '26',
+        left: 'center',
+        top: 'center',
+        textStyle: {
+            fontSize: 14,
+            color: '#FFFFFF',
+            fontFamily: 'FZLanTingHeiS-L-GB',
+
+        },
+    }, {
+        text: '爆破',
+        top: 'center',
+        left: '5%',
+        textStyle: { 
+            fontSize: 14,
+            color: "#FFFFFF" ,
+            fontFamily: 'FZLanTingHeiS-L-GB',
+        }
+    }],
+    backgroundColor: '#000000',
+    polar: {//极坐标系地底板，类似于grid
+        radius: ['65%', '80%'],
+        center: ['50%', '50%'],
+    },
+    angleAxis: {//角度轴，一个圆圈
+        max: 100,
+        show: true,
+        axisLabel: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+        splitLine: {
+            show: false
+        }
+    },
+    radiusAxis: {//径向轴，一段线段，type:'category'类目轴，类似的x轴的类目轴
+        type: 'category',
+        show: true,
+        axisLabel: {
+            show: true,
+        },
+        axisLine: {
+            show: true,
+        },
+        axisTick: {
+            show: true,
+        },
+    },
+    series: [{
+        name: '',
+        type: 'bar',//柱状图
+        roundCap: true,
+        barWidth: 50,
+        showBackground: true,
+        backgroundStyle: {
+            color: '29292F',
+        },
+        data: [2.9],
+        coordinateSystem: 'polar',//采用极坐标系
+
+        itemStyle: {
+            normal: {
+                color: "#FF9320"
+            },
+        },
+    },
+    
+    
+    ],
+
+    };
+
+    option && myChart.setOption(option);
+
+</script>
+
+
+<div id="main6" style="width: 200px;height:100px;">
+</div>
+<script>
+    var chartDom = document.getElementById('main6');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+
+    title: [{
+        text: '14',
+        left: 'center',
+        top: 'center',
+        textStyle: {
+            fontSize: 14,
+            color: '#FFFFFF',
+            fontFamily: 'FZLanTingHeiS-L-GB',
+
+        },
+    }, {
+        text: '火灾',
+        top: 'center',
+        left: '5%',
+        textStyle: { 
+            fontSize: 14,
+            color: "#FFFFFF" ,
+            fontFamily: 'FZLanTingHeiS-L-GB',
+        }
+    }],
+    backgroundColor: '#000000',
+    polar: {//极坐标系地底板，类似于grid
+        radius: ['65%', '80%'],
+        center: ['50%', '50%'],
+    },
+    angleAxis: {//角度轴，一个圆圈
+        max: 100,
+        show: true,
+        axisLabel: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+        splitLine: {
+            show: false
+        }
+    },
+    radiusAxis: {//径向轴，一段线段，type:'category'类目轴，类似的x轴的类目轴
+        type: 'category',
+        show: true,
+        axisLabel: {
+            show: true,
+        },
+        axisLine: {
+            show: true,
+        },
+        axisTick: {
+            show: true,
+        },
+    },
+    series: [{
+        name: '',
+        type: 'bar',//柱状图
+        roundCap: true,
+        barWidth: 50,
+        showBackground: true,
+        backgroundStyle: {
+            color: '29292F',
+        },
+        data: [1.5],
+        coordinateSystem: 'polar',//采用极坐标系
+
+        itemStyle: {
+            normal: {
+                color: "#FF9320"
+            },
+        },
+    },
+    
+    
+    ],
+
+    };
+
+    option && myChart.setOption(option);
+
+</script>
+<div id="main7" style="width: 200px;height:100px;">
+</div>
+<script>
+    var chartDom = document.getElementById('main7');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+
+    title: [{
+        text: '308',
+        left: 'center',
+        top: 'center',
+        textStyle: {
+            fontSize: 14,
+            color: '#FFFFFF',
+            fontFamily: 'FZLanTingHeiS-L-GB',
+
+        },
+    }, {
+        text: '其他',
+        top: 'center',
+        left: '5%',
+        textStyle: { 
+            fontSize: 14,
+            color: "#FFFFFF" ,
+            fontFamily: 'FZLanTingHeiS-L-GB',
+        }
+    }],
+    backgroundColor: '#000000',
+    polar: {//极坐标系地底板，类似于grid
+        radius: ['65%', '80%'],
+        center: ['50%', '50%'],
+    },
+    angleAxis: {//角度轴，一个圆圈
+        max: 100,
+        show: true,
+        axisLabel: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+        splitLine: {
+            show: false
+        }
+    },
+    radiusAxis: {//径向轴，一段线段，type:'category'类目轴，类似的x轴的类目轴
+        type: 'category',
+        show: true,
+        axisLabel: {
+            show: true,
+        },
+        axisLine: {
+            show: true,
+        },
+        axisTick: {
+            show: true,
+        },
+    },
+    series: [{
+        name: '',
+        type: 'bar',//柱状图
+        roundCap: true,
+        barWidth: 50,
+        showBackground: true,
+        backgroundStyle: {
+            color: '29292F',
+        },
+        data: [34.8],
+        coordinateSystem: 'polar',//采用极坐标系
+
+        itemStyle: {
+            normal: {
+                color: "#FF9320"
+            },
+        },
+    },
+    
+    
+    ],
+
+    };
+
+    option && myChart.setOption(option);
+
+</script>
+</body>
+
+</html>
